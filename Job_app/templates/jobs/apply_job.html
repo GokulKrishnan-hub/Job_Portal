@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Job</title>
+    <style>
+        body { font-family: Arial; background-color: #fefefe; padding: 30px; }
+        .container {
+            max-width: 600px; margin: auto; background: white; padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 6px;
+        }
+        h2 { color: #444; }
+        p { line-height: 1.6; }
+        button {
+            margin-top: 20px; padding: 10px 20px; background: #007bff;
+            color: white; border: none; border-radius: 4px; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Apply to "{{ job.title }}"</h2>
+        <p><strong>Description:</strong> {{ job.description }}</p>
+        <p><strong>Location:</strong> {{ job.location }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Apply Now</button>
+        </form>
+    </div>
+</body>
+</html>

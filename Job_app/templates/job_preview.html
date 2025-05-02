@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="background: white; padding: 40px 30px; margin-top: 30px; border-radius: 10px; box-shadow: 0px 2px 10px rgba(0,0,0,0.2); max-width: 700px;">
+    <h2 style="color: #333;">Preview Job Application</h2>
+
+    <h3>{{ job.title }}</h3>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+
+    <hr>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="resume" style="font-weight:bold;">Upload Your Resume:</label><br><br>
+        <input type="file" name="resume" required><br><br>
+
+        <button type="submit" style="background-color:#28a745; color:white; padding:10px 20px; border:none; border-radius:5px; font-size:16px;">Apply Now</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Register</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+
+        <div id="companyFields" style="display: none;">
+            <label for="company_name">Company Name</label>
+            <input type="text" name="company_name" id="company_name" placeholder="Company Name">
+
+            <label for="description">Company Description</label>
+            <textarea name="description" id="description" placeholder="Company Description"></textarea>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'login_view' %}">Login here</a>.</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const roleSelect = document.querySelector('select[name="role"]');
+        const companyFields = document.getElementById("companyFields");
+
+        function toggleCompanyFields() {
+            if (roleSelect.value === "company") {
+                companyFields.style.display = "block";
+            } else {
+                companyFields.style.display = "none";
+            }
+        }
+
+        roleSelect.addEventListener("change", toggleCompanyFields);
+        toggleCompanyFields();  // Initialize on load
+    });
+</script>
+{% endblock %}

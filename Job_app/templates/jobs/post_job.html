@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post a Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+        .form-container {
+            max-width: 500px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Post a New Job</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">Job Title</label>
+            <input type="text" name="title" id="title" required>
+    
+            <label for="description">Description</label>
+            <textarea name="description" id="description" rows="4" required></textarea>
+    
+            <label for="location">Location</label>
+            <input type="text" name="location" id="location" required>
+    
+            <button type="submit">Post Job</button>
+        </form>
+        <a href="{% url 'dashboard_company' %}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

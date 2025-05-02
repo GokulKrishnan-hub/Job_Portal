@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        a.button {
+            background: #28a745;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Applications for "{{ job.title }}"</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Applicant Name</th>
+            <th>Email</th>
+            <th>Resume</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.applicant.user.username }}</td>
+            <td>{{ application.applicant.user.email }}</td>
+            <td>
+                {% if application.resume %}
+                    <a class="button" href="{{ application.resume.url }}" download>Download Resume</a>
+                {% else %}
+                    No Resume Uploaded
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" style="text-align: center;">No applications yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

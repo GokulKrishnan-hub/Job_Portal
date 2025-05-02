@@ -1,0 +1,36 @@
+<!-- Job_app/templates/error.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fef2f2;
+            text-align: center;
+            padding: 100px;
+        }
+        .error-box {
+            background-color: #fff0f0;
+            border: 1px solid #ffb3b3;
+            padding: 30px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        h1 {
+            color: #e60000;
+        }
+        p {
+            color: #660000;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <h1>Oops!</h1>
+        <p>{{ message }}</p>
+        <a href="{% url 'logout_view' %}">Back to Login</a>
+    </div>
+</body>
+</html>

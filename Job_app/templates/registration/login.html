@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Login</button>
+    </form>
+    <p><a href="{% url 'forgot_password_request' %}">Forgot Password?</a></p>
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+</div>
+{% endblock %}
